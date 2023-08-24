@@ -18,11 +18,22 @@ function App() {
 
 const TicTacToeBoard: React.FC = () => {
   const [board, setBoard] = useState<( 'X' | 'O' | null)[]>(Array(9).fill(null));
+  const [turn, setTurn] = useState(0); // Use state for turn
 
   const handleCellClick = (index: number) => {
+    if (board[index]) {
+      return; // Cell already filled, do nothing
+    }
+
     const newBoard = [...board];
-    newBoard[index] = 'X';  // For now, just setting 'X'. Later you'll implement turn logic.
+    if (turn % 2 === 0) {
+      newBoard[index] = 'X'; 
+    } else {
+      newBoard[index] = 'O';
+    }
+
     setBoard(newBoard);
+    setTurn(turn + 1);  // Increment the turn
   }
 
   return (
@@ -35,5 +46,6 @@ const TicTacToeBoard: React.FC = () => {
     </div>
   );
 }
+
 
 export default App
