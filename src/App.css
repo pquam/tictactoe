@@ -2,6 +2,12 @@
   font-size: 40px;
 }
 
+.indicator {
+	color: black;
+	opacity: 1;
+	font-size: 80px;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;

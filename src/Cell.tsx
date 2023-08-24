@@ -9,9 +9,9 @@ const Cell: React.FC<CellProps> = ({ value, onClick }) => {
   return (
     <button 
       onClick={onClick} 
-      className="grid w-32 h-32 border bg-white text-3xl font-bold focus:outline-none"
+      className="self-auto p-4 flex-1 flex items-center justify-center w-32 h-32 border bg-white text-3xl font-bold focus:outline-none"
     >
-      {value}
+      <h3 className="indicator"> {value} </h3>
     </button>
   );
 }
