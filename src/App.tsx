@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div className="flex justify-center items-center">
-        	<h1>Tic Tac Toe</h1>
+        	<h1 className='titletext'>Tic Tac Toe</h1>
     	</div>
 	<TicTacToeBoard />
     </>
