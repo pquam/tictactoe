@@ -1,12 +1,14 @@
 import './App.css'
+import './index.css'
 import React, { useState } from 'react';
 import Cell from './Cell.tsx';
+import 'tailwindcss/tailwind.css'
 
 function App() {
 
   return (
     <>
-	<div className="h-screen flex justify-center items-center bg-gray-200">
+      <div className="flex justify-center items-center">
         	<h1>Tic Tac Toe</h1>
     	</div>
 	<TicTacToeBoard />
@@ -24,8 +26,8 @@ const TicTacToeBoard: React.FC = () => {
   }
 
   return (
-    <div className="grid h-screen justify-center items-center bg-gray-200">
-      <div className="grid grid-rows-3 grid-cols-3 gap-50">
+    <div className="justify-center items-center">
+      <div className="grid grid-rows-3 grid-cols-3 gap-8">
         {board.map((cellValue, index) => (
           <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
         ))}
