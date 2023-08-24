@@ -6,10 +6,10 @@ function App() {
 
   return (
     <>
-      <div className="h-screen flex justify-center items-center bg-gray-200">
-        <h1>Tic Tac Toe</h1>
-        <TicTacToeBoard />
-    </div>
+	<div className="h-screen flex justify-center items-center bg-gray-200">
+        	<h1>Tic Tac Toe</h1>
+    	</div>
+	<TicTacToeBoard />
     </>
   )
 }
@@ -24,8 +24,8 @@ const TicTacToeBoard: React.FC = () => {
   }
 
   return (
-    <div className="h-screen flex justify-center items-center bg-gray-200">
-      <div className="grid grid-cols-3 gap-2">
+    <div className="grid h-screen justify-center items-center bg-gray-200">
+      <div className="grid grid-rows-3 grid-cols-3 gap-50">
         {board.map((cellValue, index) => (
           <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
         ))}

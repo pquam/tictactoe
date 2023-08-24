@@ -9,7 +9,7 @@ const Cell: React.FC<CellProps> = ({ value, onClick }) => {
   return (
     <button 
       onClick={onClick} 
-      className="w-24 h-24 border bg-white text-3xl font-bold focus:outline-none"
+      className="grid w-100 h-100 border bg-white text-3xl font-bold focus:outline-none"
     >
       {value}
     </button>
