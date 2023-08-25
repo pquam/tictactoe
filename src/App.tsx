@@ -18,13 +18,14 @@ function App() {
 
 //react function
 const TicTacToeBoard: React.FC = () => {
-  //create the board array, fill it with null values
-  const [board, setBoard] = useState<( 'X' | 'O' | null)[]>(Array(9).fill(null));
+  //create the smallBoard array, fill it with null values
+  const [smallBoard, setBoard] = useState<( 'X' | 'O' | null)[]>(Array(9).fill(null));
+  //const [bigBoard, setBigBoard] = useState<( 'X' | 'O' | null)[]>(Array(9).fill(null));
   //initialize game at turn 0
   const [turn, setTurn] = useState(0);
 
   //check the game winner
-  const checkWinner = (board: ('X' | 'O' | null)[]) => {
+  const checkWinner = (smallBoard: ('X' | 'O' | null)[]) => {
     const winningCombination = [
       [0, 1, 2],
       [3, 4, 5],
@@ -37,8 +38,8 @@ const TicTacToeBoard: React.FC = () => {
     ];
   
     for (const [a, b, c] of winningCombination) {
-      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        return board[a];
+      if (smallBoard[a] && smallBoard[a] === smallBoard[b] && smallBoard[a] === smallBoard[c]) {
+        return smallBoard[a];
       }
     }
   
@@ -46,11 +47,11 @@ const TicTacToeBoard: React.FC = () => {
   };
 
   const handleCellClick = (index: number) => {
-    if (board[index]) {
+    if (smallBoard[index]) {
       return;
     }
 
-    const newBoard = [...board];
+    const newBoard = [...smallBoard];
     if (turn % 2 === 0) {
       newBoard[index] = 'X'; 
     } else {
@@ -61,9 +62,9 @@ const TicTacToeBoard: React.FC = () => {
     setTurn(turn + 1);
   };
 
-  // Add a useEffect to watch for board updates
+  // Add a useEffect to watch for smallBoard updates
   useEffect(() => {
-    const winner = checkWinner(board);
+    const winner = checkWinner(smallBoard);
     const [deadboard] = (Array(9).fill(null));
 
     if (winner) {
@@ -79,14 +80,57 @@ const TicTacToeBoard: React.FC = () => {
       setBoard(deadboard);
       setTurn(0);
     }
-  }, [board, turn]);  // The effect depends on the board and turn states
+  }, [smallBoard, turn]);  // The effect depends on the smallBoard and turn states
 
   return (
     <div className="justify-center items-center">
-      <div className="grid grid-rows-3 grid-cols-3 gap-8">
-        {board.map((cellValue, index) => (
-          <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
-        ))}
+      <div className="grid grid-rows-3 grid-cols-3">
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        <div className="grid grid-rows-3 grid-cols-3 gap-2 p-2 border border-4 border-cyan-500">
+          {smallBoard.map((cellValue, index) => (
+            <Cell key={index} value={cellValue} onClick={() => handleCellClick(index)} />
+          ))}
+        </div>
+        
       </div>
     </div>
   );
