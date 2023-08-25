@@ -16,10 +16,14 @@ function App() {
 }
 
 
+//react function
 const TicTacToeBoard: React.FC = () => {
+  //create the board array, fill it with null values
   const [board, setBoard] = useState<( 'X' | 'O' | null)[]>(Array(9).fill(null));
+  //initialize game at turn 0
   const [turn, setTurn] = useState(0);
 
+  //check the game winner
   const checkWinner = (board: ('X' | 'O' | null)[]) => {
     const winningCombination = [
       [0, 1, 2],
@@ -60,16 +64,20 @@ const TicTacToeBoard: React.FC = () => {
   // Add a useEffect to watch for board updates
   useEffect(() => {
     const winner = checkWinner(board);
+    const [deadboard] = (Array(9).fill(null));
+
     if (winner) {
       alert(`${winner} has won!`);
-      reset();
+      setBoard(deadboard);
+      setTurn(0);
       return;
     }
 
     // Check for a tie (cat's game)
-    if (turn === 8) {
+    if (turn === 9) {
       alert("It's a tie!");
-      reset();
+      setBoard(deadboard);
+      setTurn(0);
     }
   }, [board, turn]);  // The effect depends on the board and turn states
 
@@ -84,8 +92,5 @@ const TicTacToeBoard: React.FC = () => {
   );
 };
 
-function reset() {
-  board.fill(null)
-};
 
 export default App
